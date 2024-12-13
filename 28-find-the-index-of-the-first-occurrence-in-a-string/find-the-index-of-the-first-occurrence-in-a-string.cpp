@@ -8,7 +8,7 @@ public:
                 ans = (i-1) - (needle.length()) + 1;
                 break;
             }else if (j<needle.length() && haystack[i] == needle[j]){
-                if(!inProgress){
+                if(!inProgress){ // lsa awl harf w bbd2 aktshf el klma htng7 wla fa w22f el curr hna
                     curr = i;
                     inProgress = 1;
                 }
