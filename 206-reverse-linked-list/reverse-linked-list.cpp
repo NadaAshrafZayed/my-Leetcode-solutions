@@ -20,6 +20,7 @@ public:
             prev = curr; // Move prev forward (prepare for the next reversal.)
             curr = temp; // Move curr forward (continue loop)
         }
+        
         return prev; // prev now points to the head of the reversed list!
                      // Each node knows exactly its next so return the prev only
     }
