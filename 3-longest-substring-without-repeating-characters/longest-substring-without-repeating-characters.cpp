@@ -19,8 +19,8 @@ public:
                 st.insert(s[i]);
                 longest++;
             }
-            ans=max(ans, longest);
         }
+        ans=max(ans, longest);
 
         return ans;
     }
