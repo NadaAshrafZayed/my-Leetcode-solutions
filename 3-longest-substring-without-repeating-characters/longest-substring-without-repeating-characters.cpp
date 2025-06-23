@@ -8,13 +8,13 @@ public:
         windowStartIndex = 0;
         for(int i=0; i<s.length(); i++){
             if( st.find(s[i]) != st.end() ){ // existed
+                ans=max(ans, longest);
                 while(s[windowStartIndex] != s[i]){
                     st.erase(s[windowStartIndex]);
                     windowStartIndex++;
                     longest--;
                 }
                 windowStartIndex++;
-                ans=max(ans, longest);
             }else{
                 st.insert(s[i]);
                 longest++;
