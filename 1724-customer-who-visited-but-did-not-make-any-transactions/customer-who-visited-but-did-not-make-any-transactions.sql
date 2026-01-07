@@ -1,13 +1,22 @@
 # Write your MySQL query statement below
-SELECT v.customer_id, COUNT(v.visit_id) AS count_no_trans 
-FROM Visits v
-LEFT JOIN Transactions t
-ON v.visit_id = t.visit_id
-WHERE transaction_id IS NULL
+SELECT customer_id, COUNT(Visits.customer_id) AS count_no_trans
+FROM Visits
+WHERE visit_id NOT IN (
+    SELECT visit_id 
+    FROM Transactions
+)
 GROUP BY customer_id;
 
 
 
 
--- This girl wrote very good explanation, READ CAREFULLY
--- https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/solutions/3500258/full-explanation-unlike-any-others-where-they-only-provide-the-solution
+-- I tries this which is wrong.
+-- My mistakes:
+-- An inner join only returns rows where there is a match in both tables. Since you are looking for visits without transactions, an inner join will result in zero rows.
+-- SELECT Visits.customer_id, COUNT(Visits.customer_id) AS count_no_trans 
+-- FROM Visits JOIN Transactions
+-- ON Visits.visit_id = Transactions.visit_id
+-- WHERE Visits.visit_id NOT IN (
+--         SELECT DISTINCT visit_id FROM Transactions
+--     )
+-- GROUP BY Visits.customer_id;
